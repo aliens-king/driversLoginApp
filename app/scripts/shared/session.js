@@ -29,9 +29,9 @@
     return session;
 
     function Create(response) {
-      session.userId = response.userid;
+      session.userId = response.city;
       session.token = response.token;
-      session.userRole = 'USER';// static role for now
+      //session.userRole = 'USER';// static role for now
       if(response.date_display=='MMM DD YYYY'){
         session.dateDisplay = "MMM dd yyyy";
       }

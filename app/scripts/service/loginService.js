@@ -4,7 +4,7 @@
 'use strict';
 
 angular.module('driversLoginApp')
-  .factory('AuthenticationService',
+  .factory('LoginService',
     [ '$http',  '$rootScope', '$timeout',
       function ( $http,  $rootScope, $timeout) {
 
