@@ -1,12 +1,12 @@
 /**
- * Created by Nikhil Mahajan on 18-Jan-16.
+ * Created by Sudhanshu 0n 3/04/2017
  */
 
 (function () {
 
   'use strict';
 
-  angular.module('scfsApp').factory('Session', Session);
+  angular.module('driversLoginApp').factory('Session', Session);
   Session.$inject = ['$rootScope','$cookieStore'];
   function Session($rootScope,$cookieStore) {
     var session = {};
@@ -29,8 +29,7 @@
     return session;
 
     function Create(response) {
-      session.userId = response.city;
-      session.token = response.token;
+      /*session.userId = "";
       //session.userRole = 'USER';// static role for now
       if(response.date_display=='MMM DD YYYY'){
         session.dateDisplay = "MMM dd yyyy";
@@ -38,61 +37,62 @@
       else if(response.date_display=='DD MMM YYYY'){
         session.dateDisplay = "dd MMM yyyy";
       }
-      //session.dateDisplay = response.date_display;
+      //session.dateDisplay = response.date_display;*/
+      session.token = response.data.token;
     }
 
     function Update(response) {
-      session.userName = response.name;
+      /*session.userName = response.name;
       session.nickname = response.nickname;
       session.userType = response.usertype;
-      session.permission = response.perms;
+      session.permission = response.perms;*/
       session.userObject = response;
 
-      if(response.date_display=='MMM DD YYYY'){
+      /*if(response.date_display=='MMM DD YYYY'){
         session.dateDisplay = "MMM dd yyyy";
       }
       else if(response.date_display=='DD MMM YYYY'){
         session.dateDisplay = "dd MMM yyyy";
       }
-      // session.dateDisplay = response.date_display;
+      // session.dateDisplay = response.date_display;*/
     }
 
     function CreateUser(currentUser) {
       session.userId = currentUser.userId;
       session.token = currentUser.token;
      // session.userRole = 'USER';// static role for now
-      session.userName = currentUser.userName;
+      /*session.userName = currentUser.userName;
       session.userType = currentUser.userType;
-      session.permission = currentUser.permission;
+      session.permission = currentUser.permission;*/
       session.userObject = currentUser.userObj;
-      session.dateDisplay = currentUser.dateDisplay;
+      /*session.dateDisplay = currentUser.dateDisplay;
       //debugger;
       if(session.dateDisplay=='MMM DD YYYY'){
         session.dateDisplay = "MMM dd yyyy";
       }
       else if(session.dateDisplay=='DD MMM YYYY'){
         session.dateDisplay = "dd MMM yyyy";
-      }
+      }*/
 
     }
 
 
     function Destroy() {
       //debugger;
-      session.userId = null;
+      /*session.userId = null;*/
       session.token = null;
-      session.userRole = null;
+     /* session.userRole = null;
       session.userName = null;
       session.nickname = null;
       session.userType = null;
-      session.permission = null;
+      session.permission = null;*/
       session.userObject = null;
-      session.dateDisplay = null;
+     /* session.dateDisplay = null;*/
     }
 
     function UpdateCookies(Session) {
       $rootScope.globals = $cookieStore.get('globals') || {};
-      $rootScope.globals.currentUser.dateDisplay = Session.dateDisplay;
+      /*$rootScope.globals.currentUser.dateDisplay = Session.dateDisplay;*/
       $cookieStore.put('globals', $rootScope.globals);
 
     }
