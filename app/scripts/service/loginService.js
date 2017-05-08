@@ -48,9 +48,7 @@ angular.module('driversLoginApp')
               }).catch(function(response,status){
                   callback(response,status);
               });
-         /* .finally(function() {
-                  console.log("finally finished gists");
-              });*/
+
           }
 
 

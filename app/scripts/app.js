@@ -17,11 +17,13 @@ angular.module('driversLoginApp', ['ui.router','ngCookies'] ).config(['$statePro
             url: '/home',
         templateUrl: 'views/home.html'
 
-    })/*.state('register',{
-     url:'/register',
-     templateUrl:'views/register.html',
-     controller:'registerController'
-     })*/
+    }) .state('logout', {
+        // templateUrl: 'views/pages/login.html',
+        // url: '/login',
+        controller: 'LogoutCtrl',
+        //redirectTo:'login',
+        templateUrl: 'views/main.html'
+    })
 
 
     // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
@@ -36,19 +38,19 @@ angular.module('driversLoginApp', ['ui.router','ngCookies'] ).config(['$statePro
         $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata;
     }
 
-    $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-        alert("lllllllllll");
-        // redirect to login page if not logged in and trying to access a restricted page
-        /* var restrictedPage = $.inArray($location.path(), ['/login']) === -1;
-         var loggedIn = $rootScope.globals.currentUser;
-         if (restrictedPage && !loggedIn) {
-         $location.path('/login');
-         }*/
+
+
+        $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+            alert("ddddddddddddd");
 
         var loggedIn = LoginService.isAuthenticated();
+        alert("dddddddddddddffffffffffff");
+
         if (loggedIn) {
             $state.go(toState.name, toParams, {notify: false}).then(function () {
                 $rootScope.$broadcast('$stateChangeSuccess', toState, toParams, fromState, fromParams);
+
+                alert("000000000000000000000000");
 
             });
         }
@@ -62,5 +64,4 @@ angular.module('driversLoginApp', ['ui.router','ngCookies'] ).config(['$statePro
             console.log('User is not logged in and trying to access unauthorized page');
         }
     });
-}])
-;
+}]);
