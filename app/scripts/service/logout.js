@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('driversLoginApp').controller('LogoutCtrl',LogoutCtrl);
-    LogoutCtrl.$inject=['loginService','$state'];
+    LogoutCtrl.$inject=['LoginService','$state'];
     function LogoutCtrl(LoginService,$state) {
         console.log('LogoutCtrl');
         alert('done');
